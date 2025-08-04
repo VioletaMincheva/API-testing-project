@@ -1,0 +1,636 @@
+{
+  "info": {
+    "name": "Mini E-Commerce API with Dynamic Variables and More Items",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/register",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "register"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"user1\",\n  \"email\": \"user1@example.com\",\n  \"password\": \"pass123\"\n}"
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"user1\",\n  \"email\": \"user1@example.com\",\n  \"password\": \"pass123\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"userId\": \"abc123\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set('userId', pm.response.json().userId);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"user1\",\n  \"password\": \"pass123\"\n}"
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"user1\",\n  \"password\": \"pass123\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"token\": \"mocked-token\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set('token', pm.response.json().token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Get Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/profile",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "profile"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/profile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "profile"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"userId\": \"abc123\",\n  \"email\": \"user1@example.com\",\n  \"name\": \"User One\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. List Items",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/items",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "items"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/items",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "items"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "[\n  {\n    \"id\": \"item1\",\n    \"name\": \"Phone\",\n    \"price\": 499\n  },\n  {\n    \"id\": \"item2\",\n    \"name\": \"TV\",\n    \"price\": 899\n  },\n  {\n    \"id\": \"item3\",\n    \"name\": \"Case\",\n    \"price\": 25\n  },\n  {\n    \"id\": \"item4\",\n    \"name\": \"Headphones\",\n    \"price\": 120\n  }\n]",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let items = pm.response.json();",
+              "if (Array.isArray(items) && items.length > 0) {",
+              "    pm.environment.set(\"itemId\", items[0].id);",
+              "    pm.environment.set(\"itemId2\", items[1]?.id || \"\");",
+              "    pm.environment.set(\"itemId3\", items[2]?.id || \"\");",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Get Item by ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/items/{{itemId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "items",
+            "{{itemId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/items/{{itemId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "items",
+                "{{itemId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"id\": \"item1\",\n  \"name\": \"Phone\",\n  \"price\": 499,\n  \"description\": \"Latest model\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let item = pm.response.json();",
+              "if (item && item.id) {",
+              "    pm.environment.set(\"itemName\", item.name);",
+              "    pm.environment.set(\"itemPrice\", item.price);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Add to Cart",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/cart",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"itemId\": \"{{itemId}}\",\n  \"quantity\": 2\n}"
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemId\": \"{{itemId}}\",\n  \"quantity\": 2\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"cartId\": \"cart123\",\n  \"items\": [\n    {\n      \"itemId\": \"item1\",\n      \"quantity\": 2\n    }\n  ]\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set('cartId', pm.response.json().cartId);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. View Cart",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/cart",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "cart"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"items\": [\n    {\n      \"itemId\": \"item1\",\n      \"quantity\": 2\n    }\n  ]\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8. Submit Payment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/payment",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "payment"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/25\",\n  \"cvv\": \"123\"\n}"
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/payment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payment"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/25\",\n  \"cvv\": \"123\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"paymentStatus\": \"approved\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "9. Place Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/order",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "order"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/order",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "order"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"orderId\": \"order789\",\n  \"status\": \"confirmed\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "10. Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/logout",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "logout"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Example Response",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "{\n  \"message\": \"Logged out successfully\"\n}",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

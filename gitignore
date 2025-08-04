@@ -1,0 +1,11 @@
+# Node.js (for Newman, if installed)
+node_modules/
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Postman files (optional if sensitive)
+*.postman_environment.json
+*.postman_collection.json
