@@ -1,20 +1,36 @@
-name: Run Postman Collection
+name: Run Postman Tests with Newman
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  run-postman:
+  newman-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      - name: Install Newman
-        run: npm install -g newman
+    - name: Install Newman
+      run: npm install -g newman
 
-      - name: Run Postman Collection
-        run: newman run collections/ecommerce-dynamic-mock-collection.json -e environments/ecommerce-full-env.json
+    - name: Run Collection
+      run: |
+        newman run collections/ecommerce-complete-collection.json \
+          -e environments/ecommerce-full-env.json \
+          --reporters cli,json,html \
+          --reporter-html-export newman-report.html
+
+    - name: Upload Newman Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: newman-report
+        path: newman-report.html
