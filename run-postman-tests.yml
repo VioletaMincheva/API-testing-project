@@ -24,8 +24,8 @@ jobs:
 
     - name: Run Collection
       run: |
-        newman run collections/ecommerce-complete-collection.json \
-          -e environments/ecommerce-full-env.json \
+        newman run collections/Mini E-Commerce.postman_collection (3).json \
+          -e environments/Mock server 7.postman_environment (1).json \
           --reporters cli,json,html \
           --reporter-html-export newman-report.html
 
