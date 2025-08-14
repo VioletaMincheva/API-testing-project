@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "0edbf790-193b-48e4-9d86-f5499234acf0",
 		"name": "Mini E-Commerce",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "40836439"
 	},
 	"item": [
@@ -45,15 +45,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"username\": \"user1\",\n  \"email\": \"user1@example.com\",\n  \"password\": \"pass123\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/register",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"register"
-					]
-				}
+				"url": "{{base_url}}/register"
 			},
 			"response": [
 				{
@@ -70,15 +62,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"username\": \"user1\",\n  \"email\": \"user1@example.com\",\n  \"password\": \"pass123\"\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/register",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"register"
-							]
-						}
+						"url": "{{base_url}}/register"
 					},
 					"status": "OK",
 					"code": 200,
@@ -128,15 +112,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"username\": \"user1\",\n  \"password\": \"wrongpass\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/login",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"login"
-					]
-				}
+				"url": "{{base_url}}/login"
 			},
 			"response": [
 				{
@@ -159,15 +135,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{base_url}}/login",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"login"
-							]
-						}
+						"url": "{{base_url}}/login"
 					},
 					"status": "OK",
 					"code": 200,
@@ -214,15 +182,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"username\": \"user1\",\n  \"password\": \"pass123\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/login",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"login"
-					]
-				}
+				"url": "{{base_url}}/login"
 			},
 			"response": [
 				{
@@ -245,15 +205,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{base_url}}/login",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"login"
-							]
-						}
+						"url": "{{base_url}}/login"
 					},
 					"status": "OK",
 					"code": 200,
@@ -291,15 +243,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{base_url}}/profile",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"profile"
-					]
-				}
+				"url": "{{base_url}}/profile"
 			},
 			"response": [
 				{
@@ -312,15 +256,7 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"url": {
-							"raw": "{{base_url}}/profile",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"profile"
-							]
-						}
+						"url": "{{base_url}}/profile"
 					},
 					"status": "OK",
 					"code": 200,
@@ -392,15 +328,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{base_url}}/items",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"items"
-					]
-				}
+				"url": "{{base_url}}/items"
 			},
 			"response": [
 				{
@@ -413,15 +341,7 @@
 								"value": "application/json"
 							}
 						],
-						"url": {
-							"raw": "{{base_url}}/items",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"items"
-							]
-						}
+						"url": "{{base_url}}/items"
 					},
 					"status": "OK",
 					"code": 200,
@@ -477,16 +397,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{base_url}}/items/{{itemId2}}",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"items",
-						"{{itemId2}}"
-					]
-				}
+				"url": "{{base_url}}/items/{{itemId2}}"
 			},
 			"response": [
 				{
@@ -499,15 +410,7 @@
 								"value": "application/json"
 							}
 						],
-						"url": {
-							"raw": "{{base_url}}/items",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"items"
-							]
-						}
+						"url": "{{base_url}}/items"
 					},
 					"status": "OK",
 					"code": 200,
@@ -552,13 +455,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{token}}"
+					}
 				},
 				"method": "DELETE",
 				"header": [
@@ -571,16 +470,7 @@
 					"mode": "raw",
 					"raw": "{\r\n    \"id\": \"{{itemId}}\"\r\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/items/{{itemId}}",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"items",
-						"{{itemId}}"
-					]
-				}
+				"url": "{{base_url}}/items/{{itemId}}"
 			},
 			"response": []
 		},
@@ -627,15 +517,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"itemId\": \"{{itemId}}\",\n  \"quantity\": 2\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/cart",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"cart"
-					]
-				}
+				"url": "{{base_url}}/cart"
 			},
 			"response": [
 				{
@@ -652,15 +534,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"itemId\": \"{{itemId}}\",\n  \"quantity\": 2\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/cart",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cart"
-							]
-						}
+						"url": "{{base_url}}/cart"
 					},
 					"status": "OK",
 					"code": 200,
@@ -703,15 +577,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"itemId\": \"invalid123\",\n  \"quantity\": 1\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/cart",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"cart"
-					]
-				}
+				"url": "{{base_url}}/cart"
 			},
 			"response": [
 				{
@@ -728,15 +594,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"itemId\": \"invalid123\",\n  \"quantity\": 1\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/cart",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cart"
-							]
-						}
+						"url": "{{base_url}}/cart"
 					},
 					"status": "OK",
 					"code": 200,
@@ -762,15 +620,7 @@
 						"value": "application/json"
 					}
 				],
-				"url": {
-					"raw": "{{base_url}}/cart",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"cart"
-					]
-				}
+				"url": "{{base_url}}/cart"
 			},
 			"response": [
 				{
@@ -783,15 +633,7 @@
 								"value": "application/json"
 							}
 						],
-						"url": {
-							"raw": "{{base_url}}/cart",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cart"
-							]
-						}
+						"url": "{{base_url}}/cart"
 					},
 					"status": "OK",
 					"code": 200,
@@ -835,15 +677,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/20\",\n  \"cvv\": \"123\",\n  \"method\": \"card\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/payment",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"payment"
-					]
-				}
+				"url": "{{base_url}}/payment"
 			},
 			"response": [
 				{
@@ -860,15 +694,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/20\",\n  \"cvv\": \"123\",\n  \"method\": \"card\"\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/payment",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"payment"
-							]
-						}
+						"url": "{{base_url}}/payment"
 					},
 					"status": "OK",
 					"code": 200,
@@ -911,15 +737,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/25\",\n  \"method\": \"card\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/payment",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"payment"
-					]
-				}
+				"url": "{{base_url}}/payment"
 			},
 			"response": [
 				{
@@ -936,15 +754,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/25\",\n  \"method\": \"card\"\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/payment",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"payment"
-							]
-						}
+						"url": "{{base_url}}/payment"
 					},
 					"status": "OK",
 					"code": 200,
@@ -988,15 +798,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"paypalEmail\": \"user@paypal.com\",\n  \"method\": \"paypal\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/payment",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"payment"
-					]
-				}
+				"url": "{{base_url}}/payment"
 			},
 			"response": [
 				{
@@ -1013,15 +815,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"paypalEmail\": \"user@paypal.com\",\n  \"method\": \"paypal\"\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/payment",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"payment"
-							]
-						}
+						"url": "{{base_url}}/payment"
 					},
 					"status": "OK",
 					"code": 200,
@@ -1051,15 +845,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/25\",\n  \"cvv\": \"123\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/payment",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"payment"
-					]
-				}
+				"url": "{{base_url}}/payment"
 			},
 			"response": [
 				{
@@ -1076,15 +862,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"cardNumber\": \"4111111111111111\",\n  \"expiry\": \"12/25\",\n  \"cvv\": \"123\"\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/payment",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"payment"
-							]
-						}
+						"url": "{{base_url}}/payment"
 					},
 					"status": "OK",
 					"code": 200,
@@ -1110,15 +888,7 @@
 						"value": "application/json"
 					}
 				],
-				"url": {
-					"raw": "{{base_url}}/order",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order"
-					]
-				}
+				"url": "{{base_url}}/order"
 			},
 			"response": [
 				{
@@ -1131,15 +901,7 @@
 								"value": "application/json"
 							}
 						],
-						"url": {
-							"raw": "{{base_url}}/order",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"order"
-							]
-						}
+						"url": "{{base_url}}/order"
 					},
 					"status": "OK",
 					"code": 200,
@@ -1165,15 +927,7 @@
 						"value": "Bearer {{token}}"
 					}
 				],
-				"url": {
-					"raw": "{{base_url}}/logout",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"logout"
-					]
-				}
+				"url": "{{base_url}}/logout"
 			},
 			"response": [
 				{
@@ -1186,15 +940,7 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"url": {
-							"raw": "{{base_url}}/logout",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"logout"
-							]
-						}
+						"url": "{{base_url}}/logout"
 					},
 					"status": "OK",
 					"code": 200,
@@ -1237,15 +983,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"username\": \"\",\n  \"email\": \"user2@example.com\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/register",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"register"
-					]
-				}
+				"url": "{{base_url}}/register"
 			},
 			"response": [
 				{
@@ -1262,15 +1000,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"username\": \"\",\n  \"email\": \"user2@example.com\"\n}"
 						},
-						"url": {
-							"raw": "{{base_url}}/register",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"register"
-							]
-						}
+						"url": "{{base_url}}/register"
 					},
 					"status": "OK",
 					"code": 200,
