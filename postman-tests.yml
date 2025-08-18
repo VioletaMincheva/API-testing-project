@@ -1,0 +1,36 @@
+name: API Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  newman-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-html
+
+      - name: Run Postman Collection
+        run: |
+          newman run "Mini E-Commerce 77.postman_collection.json" \
+            -e "Mock server 77.postman_environment.json" \
+            --reporters cli,html \
+            --reporter-html-export newman-report.html
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: newman-report.html
