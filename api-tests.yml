@@ -25,11 +25,11 @@ jobs:
 
       - name: Run API tests with Newman
         run: |
-            newman run "https://raw.githubusercontent.com/VioletaMincheva/API-testing-project/blob/main/Mini%20E-Commerce%2077.postman_collection.json" 
-  -e "https://raw.githubusercontent.com/VioletaMincheva/API-testing-project/blob/main/Mock%20server%2077.postman_environment.json" 
-  --bail 
-  --reporters cli,html 
-  --reporter-html-export newman-report.html\
+          newman run "https://raw.githubusercontent.com/VioletaMincheva/API-testing-project/blob/main/Mini%20E-Commerce%2077.postman_collection.json" \
+            -e "https://raw.githubusercontent.com/VioletaMincheva/API-testing-project/blob/main/Mock%20server%2077.postman_environment.json" \
+            --bail \
+            --reporters cli,html,junit \
+            --reporter-html-export newman-report.html \
             --reporter-junit-export newman-report.xml
 
       - name: Upload Test Reports
