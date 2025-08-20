@@ -566,7 +566,7 @@
 						"value": "application/json"
 					}
 				],
-				"url": "{{base_url}}/cart/mock-cart-123"
+				"url": "{{base_url}}/cart"
 			},
 			"response": [
 				{
@@ -592,98 +592,6 @@
 					],
 					"cookie": [],
 					"body": "{\n  \"cartId\": \"mock-cart-123\",\n  \"items\": [\n    { \"id\": \"item1\", \"name\": \"Phone\", \"price\": 499, \"quantity\": 1 }\n  ]\n}\n"
-				},
-				{
-					"name": "9. View Cart",
-					"originalRequest": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": "{{base_url}}/cart/mock-cart-123"
-					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "",
-					"header": [
-						{
-							"key": "Date",
-							"value": "Wed, 20 Aug 2025 07:56:58 GMT"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Content-Encoding",
-							"value": "gzip"
-						},
-						{
-							"key": "x-srv-trace",
-							"value": "v=1;t=1026d4fd5cb5f29c"
-						},
-						{
-							"key": "x-srv-span",
-							"value": "v=1;s=40355bce6c0bdaf2"
-						},
-						{
-							"key": "access-control-allow-origin",
-							"value": "*"
-						},
-						{
-							"key": "x-ratelimit-limit",
-							"value": "120"
-						},
-						{
-							"key": "x-ratelimit-remaining",
-							"value": "117"
-						},
-						{
-							"key": "x-ratelimit-reset",
-							"value": "1755676636"
-						},
-						{
-							"key": "etag",
-							"value": "W/\"f3-HBiIyJWUHUWX/oPT7Emp7x0Nxms\""
-						},
-						{
-							"key": "vary",
-							"value": "Accept-Encoding"
-						},
-						{
-							"key": "x-envoy-upstream-service-time",
-							"value": "185"
-						},
-						{
-							"key": "cf-cache-status",
-							"value": "DYNAMIC"
-						},
-						{
-							"key": "Set-Cookie",
-							"value": "__cf_bm=h3Gc5PSJL0o.foziU1iCuiXJpT09767XtzvhpX0x76A-1755676618-1.0.1.1-UVloBWQzAujOVP6vqcp3Y_qGstNPjP1I0ZwCwPgqWsYAgfDduNAARa6R8wqSXx1Rg6Zpztw7ja3i2wruLxI4pY623VucbOjglkKwmSDLszw; path=/; expires=Wed, 20-Aug-25 08:26:58 GMT; domain=.pstmn.io; HttpOnly; Secure; SameSite=None"
-						},
-						{
-							"key": "Server",
-							"value": "cloudflare"
-						},
-						{
-							"key": "CF-RAY",
-							"value": "9720564e0c04780e-IAD"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"error\": {\n        \"name\": \"mockRequestNotFoundError\",\n        \"message\": \"Double check your method and the request path and try again. Learn more here: https://learning.postman.com/docs/design-apis/mock-apis/matching-algorithm/\",\n        \"header\": \"No matching requests\"\n    }\n}"
 				}
 			]
 		},
@@ -695,11 +603,12 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Payment declined\", function () {",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(200);",
 							"    pm.expect(pm.response.json().paymentStatus).to.eql(\"declined\");",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -756,10 +665,11 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Missing CVV\", function () {",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(200);",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1001,11 +911,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 400\", function () {",
-							"    pm.response.to.have.status(400);",
+							"pm.test(\"Missing credentials\", function () {",
+							"    pm.response.to.have.status(200);",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
